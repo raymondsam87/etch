@@ -1,0 +1,22 @@
+button#reset {
+    padding: 12px 6px;
+    margin-bottom: 10px;
+}
+
+div#canvas {
+    display:grid;
+    grid-template-columns: repeat(16,1fr);
+    grid-template-rows: repeat(16,1fr);
+    grid-column-gap: 1px;
+    grid-row-gap: 1px;
+    width: 600px;
+    height: 600px;
+}
+
+.canvasDiv{
+    background-color:black;
+}
+
+.whiteSquare {
+    background-color:white;
+}
