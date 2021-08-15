@@ -21,8 +21,13 @@ function drawSquares (squares){
 }
 
 //fill div with white once hovered
+
 function fillDiv() {
-    this.classList.add('whiteSquare');
+    let fillColor = RGBColor;
+    if (RGBColor === 'random') {
+        fillColor = Math.floor(Math.random()*16777215).toString(16);
+    }
+    this.style.backgroundColor = fillColor;
 }
 
 function logDiv(e){
@@ -48,8 +53,8 @@ function askGridSize() {
 }
 
 //look out for mouse hover on any div in canvas, if any of the divs are hovered, run the fillblack funciton
-function monitorMouse(hoverDivs, hoverDiv) {
-    hoverDivs.forEach(hoverDiv => hoverDiv.addEventListener('mouseover', fillDiv)); 
+function monitorMouse(hoverDivs, hoverDiv, RGBColor) {
+    hoverDivs.forEach(hoverDiv => hoverDiv.addEventListener('mouseover', fillDiv));  
 }
 
 function resetButton (hoverDivs, hoverDiv) {
@@ -65,11 +70,31 @@ function resetButton (hoverDivs, hoverDiv) {
     });
 }
 
+//change the bg-color of div to random colour
+function rgbButton () {
+    const rgbButton = document.querySelector('button#RGB');
+    rgbButton.addEventListener ('click', ()=> {
+        console.log('random');
+        RGBColor = 'random';
+    });
+}
+
+//change the bg-color of div to random colour
+function regularButton () {
+    const rgbButtons = document.querySelector('button#regular');
+    rgbButtons.addEventListener ('click', ()=> {
+        RGBColor = 'white';
+    });
+}
+
 let squares = 16;
+let RGBColor = 'white';
 drawSquares(squares);
 let hoverDivs = document.querySelectorAll('.canvasDiv');
 let hoverDiv = document.querySelector('.canvasDiv');
 resetButton(hoverDivs, hoverDiv);
+rgbButton();
+regularButton();
 monitorMouse(hoverDivs, hoverDiv);
 
 
